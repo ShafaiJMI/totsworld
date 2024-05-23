@@ -26,19 +26,29 @@ SECRET_KEY = 'django-insecure-(o_=)a#64p_6*n5pe=uim%x=rl)f7xzx%8oa*@y1_)q@q935r)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.9']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'core',
+    'cms',
+    'category',
+    'product',
+    'cart',
+    'order',
+    'checkout',
+    'payment',
+    'newsletter',
+    'authentication',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -72,7 +82,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
+CART_SESSION_ID ='cart'
+CHECKOUT_SESSION_ID ='checkout'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 

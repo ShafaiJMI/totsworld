@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.shortcuts import reverse
 from category.models import Category
+from core.utils import rename_image
 
 # Create your models here.
 class Product(models.Model):
@@ -63,8 +64,11 @@ class Product(models.Model):
         return ProductImage.objects.filter(product=self)
     @property
     def get_thumbnail(self):
-        thumbnail = ProductImage.objects.filter(product=self)[:1]
-        return thumbnail
+        thumbnail_queryset = ProductImage.objects.filter(product=self)
+        if thumbnail_queryset.exists():
+            return thumbnail_queryset  # Assuming 'image' is the field name containing the thumbnail URL
+        else:
+            return ""
     @property
     def get_discount_price(self):
         discount_p = self.price-((self.price/100)*self.sale)
@@ -73,7 +77,7 @@ class Product(models.Model):
 class ProductImage(models.Model):
     # field : product_id, image url, alt, description and more to be decided
     product = models.ForeignKey(Product,on_delete=models.CASCADE,null=False)
-    image = models.ImageField(null=False)
+    image = models.ImageField(upload_to=rename_image,null=False)
     caption = models.CharField(max_length=100,blank=True,null=True)
     position = models.IntegerField(blank=True,null=True)
     created_at = models.DateTimeField(auto_now_add=True)

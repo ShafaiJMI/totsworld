@@ -2,38 +2,37 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
-from .forms import SigninForm
-
+from .forms import CustomAuthenticationForm
 
 # Create your views here.
 def signin(request):
-    next_page = "home"
-    if request.GET:  
-        next_page = request.GET['next']
+    next_page = request.GET.get('next', 'landing-page')
+
     if request.user.is_authenticated:
         return redirect(next_page)
-    else:
-        if request.method =="POST":
-            form = SigninForm(request,data=request.POST)
-            if form.is_valid():
-                username = form.cleaned_data.get("username")
-                password = form.cleaned_data.get("password")
-                next_page = request.POST.get('next')
-                user = authenticate(username=username,password=password)
-                if user is not None:
-                    login(request,user)
-                    messages.success(request,"Logged in as {}".format(username))
-                    return redirect(next_page)
-                else:
-                    messages.error(request,"Invalid credential!")
-                    return redirect('signin')
+
+    if request.method == "POST":
+        form = CustomAuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get("email")
+            password = form.cleaned_data.get("password")
+            user = authenticate(request, username=email, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, f"Logged in as {email}")
+                return redirect('langing-page')
             else:
-                messages.error(request,"Invalid credential!")
-                return redirect('signin')
-    return render(request,'auth/signin.html',{'next':next_page,})
+                form.add_error(None, "Invalid email or password!")
+        else:
+            messages.error(request, "Invalid input")
+    else:
+        form = CustomAuthenticationForm(request)
+
+    return render(request, 'login.html', {'form':form,'next': next_page})
+
 def signup(request):
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('landing-page')
 
         if request.method =="POST":
             username = request.POST["username"]
@@ -64,26 +63,29 @@ def signup(request):
             if password == cpassword and username.isalnum():
                 newuser.save()
                 messages.success(request,'Your account has been Created /n check your email for activation')
-                return redirect('signin')
+                return redirect('login')
             else:
                 messages.error(request,"Bad credential")
                 return redirect('signup')
-    return render(request,'auth/signup.html')
+    return render(request,'signup.html')
+
 def signout(request):
     logout(request)
     messages.success(request,"Logged out")
-    return redirect('signin') #redicrect to home
+    return redirect('login') #redicrect to home
+
 def activate(request,uid,token):
     if request.method =="POST":
         user = User.object.filter(username=uid)
         if True:
             user["status"]=True
             messages.success(request,"Account activated,Login with your credentials")
-            return render(request,'auth/signin.html')
+            return render(request,'signin.html')
         else:
             messages.error(request,"Invalid User")
             return redirect()
     return render(request,'auth/activate.html')
+
 def resetpassword(request,uid,token):
     if request.method=="POST":
         user = User.object.filter(username=uid)
@@ -96,6 +98,7 @@ def resetpassword(request,uid,token):
             messages.error("Invalid Link")
             return redirect()
     return render(request,'auth/resetpass.html')
+
 def changepassword(request,uid,token):
     if request.method=="POST":
         user = User.object.filter(username=uid)

@@ -3,16 +3,17 @@ from django.conf import settings
 from django.utils import timezone
 from django.shortcuts import reverse
 #from authentication.models import CustomUser
-from django.contrib.auth.models import User
+from django.conf import settings
 #from order.models import Order
 from product.models import Product
+from .utils import rename_image
 ''' Create your models here.Category, Product, Product_images, Product_category,
 Order, Product_order, referral, Cart,  Wishlist, Review, settings, Issue Report,
 Payments, Billing Detail, Cancled order, Return, Refund, Newsletter subscrtiption,'''
 
 class FeaturedImage(models.Model):
     title = models.CharField(max_length=100,blank=True,null=True)
-    image = models.ImageField()
+    image = models.ImageField(upload_to=rename_image)
     description = models.TextField(max_length=250,blank=True,null=True)
     keyword = models.TextField(max_length=150,blank=True,null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -22,7 +23,7 @@ class FeaturedImage(models.Model):
         return self.title
 
 class UserAddress(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     fullname = models.CharField(max_length=50)
     address = models.TextField(max_length=200)
     phone_number_1 = models.IntegerField()
@@ -45,7 +46,7 @@ class Banner(models.Model):
     title = models.CharField(max_length=50)
     caption = models.CharField(max_length=100,blank=True,null=True)
     target = models.CharField(max_length=100,blank=True,null=True)
-    image = models.ImageField(blank=True,null=True)
+    image = models.ImageField(upload_to=rename_image,blank=True,null=True)
     featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -83,7 +84,7 @@ class Referral(models.Model):
 
 class Review(models.Model):
     ''' field : user_id product_id rating review '''
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     rating = models.IntegerField()
     review = models.TextField(max_length=250)
@@ -115,7 +116,7 @@ class Setting(models.Model):
 
 class ReportIssue(models.Model):
     ''' issue type detail user_id'''
-    user = models.ForeignKey(User,on_delete=models.CASCADE,null=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,null=False)
     issue_type = models.CharField(max_length=50)
     detail = models.CharField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)

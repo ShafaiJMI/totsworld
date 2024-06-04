@@ -20,14 +20,15 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('category/',include('category.urls')),
+    path('', include('core.urls')),
+    path('',include('category.urls')),
     path('',include('product.urls')),
     path('',include('cart.urls')),
+    path('',include('authentication.urls')),
     path('checkout/',include('checkout.urls')),
-    path('orders/',include('order.urls')),
+    path('',include('order.urls')),
     path('newsletter/',include('newsletter.urls')),
     path('dashboard/', include('cms.urls')),
-    path('', include('core.urls')),
     path('admin/', admin.site.urls),
 ]
 

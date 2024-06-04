@@ -1,8 +1,13 @@
 from rest_framework import serializers
-from .models import Product
+from .models import Product, ProductImage
 
 # Serializers define the API representation.
-class ProductSerializer(serializers.HyperlinkedModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ["pk","title","price","created_at","updated_at"]
+        fields = "__all__"
+
+class ProductImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductImage
+        fields = "__all__"

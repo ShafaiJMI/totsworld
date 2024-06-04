@@ -1,0 +1,34 @@
+{% load static %}
+<html class="h-full bg-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>{% block title %}{% endblock %}</title>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bubblegum: '#ffd3db',
+            cream : '#fffdf9',
+            lightblue : '#f2f7fb',
+          }
+        }
+      },
+    }
+  </script>
+</head>
+<body class="h-full bg-lightblue">
+  {% if messages %}
+<ul class="bg-red-100 py-5 messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

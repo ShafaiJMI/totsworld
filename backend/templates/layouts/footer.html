@@ -64,9 +64,9 @@
 
   <!-- Main container div: holds the entire content of the footer, including four sections (TW Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. -->
   <div class="mx-6 py-10 text-center md:text-left">
-    <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+    <div class="grid-cols-2 grid gap:2 md:gap-8 md:grid-cols-2 lg:grid-cols-4">
       <!-- TW Elements section -->
-      <div class="">
+      <div class="hidden md:block">
         <h6
           class="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
           <span class="me-3 [&>svg]:h-4 [&>svg]:w-4">
@@ -89,7 +89,7 @@
       <!-- Products section -->
       <div>
         <h6
-          class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+          class="mb-4 hidden md:flex justify-center font-semibold uppercase md:justify-start">
           Products
         </h6>
         <p class="mb-4">
@@ -108,7 +108,7 @@
       <!-- Useful links section -->
       <div>
         <h6
-          class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+          class="mb-4 hidden md:flex justify-center font-semibold uppercase md:justify-start">
           Useful links
         </h6>
         <p class="mb-4">
@@ -126,7 +126,7 @@
         </p>
       </div>
       <!-- Contact section -->
-      <div>
+      <div class="hidden md:block">
         <h6
           class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
           Contact

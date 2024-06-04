@@ -2,14 +2,13 @@
 from django.db import models
 from django.utils import timezone
 from django.shortcuts import reverse
-from django.contrib.auth.models import User
+from django.conf import settings
 from core.models import UserAddress
 from product.models import Product
 
 # Create your models here.
 class Order(models.Model):
     status = (('pending','Pending'),
-        ('successful','Successful'),
         ('recived','Recived'),
         ('packed','Packed'),
         ('shipped','Shipped'),
@@ -21,10 +20,10 @@ class Order(models.Model):
         ('failed','Failed'))
     
     pay_status = (('pending','Pending'),
-        ('successful','Successful'),
+        ('successful','Succnessful'),
         ('failed','Failed'))
     order_uniqid = models.CharField(max_length=30,null=True,blank=True)
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     address = models.ForeignKey(UserAddress,on_delete=models.CASCADE)
     coupon_code = models.CharField(max_length=50,null=True,blank=True)
     payment_status = models.CharField(choices=pay_status,max_length=50,default='pending')
@@ -45,7 +44,6 @@ class Order(models.Model):
 class ProductOrder(models.Model):
     ''' field : product_id, order_id and more to be decided '''
     status = (('pending','Pending'),
-        ('successful','Successful'),
         ('recived','Recived'),
         ('packed','Packed'),
         ('shipped','Shipped'),

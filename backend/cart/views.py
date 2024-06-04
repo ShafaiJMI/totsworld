@@ -3,19 +3,12 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
-from rest_framework.decorators import api_view
-from rest_framework import viewsets
-from rest_framework.response import Response
-from django.views.decorators.csrf import csrf_exempt
 from core.models import UserAddress
+from .serializers import CartSerializer
 from .models import Cart
 from product.models import Product
 
 # Create your views here.
-@api_view(['GET'])
-def home(request):
-	return HttpResponse(status_code=202)
-
 @login_required(login_url='/signin/')
 def cart(request):
     'Show from cart session and db'
@@ -63,6 +56,6 @@ def addtocart(request,product_slug):
 @login_required(login_url='/signin/')
 def removefromcart(request,product_pk):
     if request.method =="POST":
-        product = Product.de
+        product = Product.delete(id=product_pk)
     date = datetime.datetime.now()
     return HttpResponse("<h1>remove from cart Page</h1><p>{}</p>".format(date),status=201)

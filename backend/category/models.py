@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.shortcuts import reverse
+from core.utils import rename_image
 #from product.models import Product
 
 # Create your models here.
@@ -9,7 +10,7 @@ class Category(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField()
     parent = models.ForeignKey('self',on_delete=models.CASCADE,blank=True,null=True,related_name="subcategory")
-    image = models.ImageField(blank=True,null=True)
+    image = models.ImageField(upload_to=rename_image,blank=True,null=True)
     description = models.CharField(max_length=100,blank=True,null=True)
     tags = models.CharField(max_length=100,blank=True,null=True)
     created_at = models.DateTimeField(auto_now_add=True)

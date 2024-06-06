@@ -16,11 +16,11 @@ def signin(request):
         if form.is_valid():
             email = form.cleaned_data.get("email")
             password = form.cleaned_data.get("password")
-            user = authenticate(request, username=email, password=password)
+            user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
                 messages.success(request, f"Logged in as {email}")
-                return redirect('langing-page')
+                return redirect(next_page)
             else:
                 form.add_error(None, "Invalid email or password!")
         else:
@@ -28,7 +28,7 @@ def signin(request):
     else:
         form = CustomAuthenticationForm(request)
 
-    return render(request, 'login.html', {'form':form,'next': next_page})
+    return render(request, 'auth/login.html', {'form':form,'next': next_page})
 
 def signup(request):
     if request.user.is_authenticated:
@@ -67,7 +67,7 @@ def signup(request):
             else:
                 messages.error(request,"Bad credential")
                 return redirect('signup')
-    return render(request,'signup.html')
+    return render(request,'auth/signup.html')
 
 def signout(request):
     logout(request)
@@ -80,7 +80,7 @@ def activate(request,uid,token):
         if True:
             user["status"]=True
             messages.success(request,"Account activated,Login with your credentials")
-            return render(request,'signin.html')
+            return redirect('login')
         else:
             messages.error(request,"Invalid User")
             return redirect()
@@ -93,11 +93,11 @@ def resetpassword(request,uid,token):
         if True:
             user['password']=password
             messages.success(request,"Password Changed")
-            return render(request,'auth/signin.html')
+            return redirect('login')
         else:
             messages.error("Invalid Link")
-            return redirect()
-    return render(request,'auth/resetpass.html')
+            return redirect('landing-page')
+    return render(request,'auth/reset_password.html')
 
 def changepassword(request,uid,token):
     if request.method=="POST":
@@ -107,8 +107,8 @@ def changepassword(request,uid,token):
         if oldpassword == user['password']:
             user['password']=password
             messages.success(request,"Password Changed")
-            return render(request,'auth/signin.html')
+            return redirect('login')
         else:
             messages.error(request,"Invalid Link")
-            return redirect()
-    return render(request,'auth/resetpass.html')
+            return redirect('landing-page')
+    return render(request,'auth/reset_password.html')

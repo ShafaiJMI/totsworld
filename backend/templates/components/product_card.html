@@ -1,0 +1,24 @@
+{% load static %}
+<li>
+    <a href="{% url 'product_detail' product.slug %}" class="group block overflow-hidden">
+      <img
+        src="{% static "img/categories/category1.jpeg" %}"
+        alt=""
+        class="h-[250px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
+      />
+
+      <div class="relative bg-white pt-3">
+        <h3
+          class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4"
+        >
+          {{ product.title }}
+        </h3>
+
+        <p class="mt-2">
+          <span class="sr-only"> Regular Price </span>
+
+          <span class="tracking-wider text-gray-900"> ₹{{product.price}} </span>
+        </p>
+      </div>
+    </a>
+  </li>

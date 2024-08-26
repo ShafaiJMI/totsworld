@@ -1,5 +1,6 @@
 
 from rest_framework.views import APIView
+from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
 from django.views.decorators.csrf import csrf_exempt
@@ -14,3 +15,9 @@ class CatalogueAPI(APIView):
         item = Catalogue.objects.all()
         serializer = CatalogueSerializer(item, many=True)
         return Response(serializer.data)
+def catalogue(request):
+    item = Catalogue.objects.all()
+    context = {
+        'items':item,
+    }
+    return render(request,'catalogue.html',context)

@@ -19,5 +19,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("api/catalogue/",views.CatalogueAPI.as_view(),name="catalogue"),
+    path("api/catalogue/",views.CatalogueAPI.as_view(),name="catalogue-api"),
+    path("catalogue/",views.catalogue,name="catalogue"),
 ]

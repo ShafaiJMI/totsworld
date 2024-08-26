@@ -57,7 +57,7 @@ def collection(request,category_slug=None):
             'products':products,
             }
     #messages.info(request,'Site Under construction')
-    return render(request,"product.html",context)
+    return render(request,"product_list.html",context)
 
 def product_detail(request,pslug):
     recent_product = RecentProduct(request)
@@ -71,4 +71,4 @@ def product_detail(request,pslug):
     'reviews':reviews,
         }
     #messages.info(request,'Site Under construction')
-    return render(request,'single_product.html',context)
+    return render(request,'product_detail.html',context)

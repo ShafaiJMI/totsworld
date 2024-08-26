@@ -19,15 +19,12 @@ def signin(request):
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                messages.success(request, f"Logged in as {email}")
-                return redirect(next_page)
+                messages.success(request, "Logged in as")
+                return redirect('landing-page')
             else:
                 form.add_error(None, "Invalid email or password!")
-        else:
-            messages.error(request, "Invalid input")
-    else:
-        form = CustomAuthenticationForm(request)
 
+    form = CustomAuthenticationForm(request)
     return render(request, 'auth/login.html', {'form':form,'next': next_page})
 
 def signup(request):

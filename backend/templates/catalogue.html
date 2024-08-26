@@ -46,67 +46,136 @@
   </script>
 </head>
 <body class="">
-        <div class="container-2xl mx-auto px-8 py-8">
+  
+  <a href="https://wa.me/+919205901243" target="_blank" class="fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M20.49 19.74L18.5 21.74A2.25 2.25 0 0115.45 21l-1.7-1.7a2.25 2.25 0 01-.6-1.93c.1-.6.41-1.15.9-1.5l1.7-1.14a2.25 2.25 0 01.93-.3c.61-.02 1.22.1 1.78.3a2.25 2.25 0 011.04 1.06l.9 1.78a2.25 2.25 0 01-.02 2.25zM3.6 4.36A10.84 10.84 0 0117.6 20.5L16 19.14a8.25 8.25 0 10-8.7-8.7L4.6 4.36a10.84 10.84 0 01-.98-9.28L2.07 4.26a8.5 8.5 0 1013.33 13.33l2.24 2.24c-2.4 2.4-6.29 2.4-8.7 0l-4.54-4.53a8.48 8.48 0 01-2.24-2.24L.36 3.5A10.84 10.84 0 013.6 4.36z"/>
+    </svg>
+  </a>
+  
+  <header class="text-center mt-4">
+    <h2 class="text-xl font-bold font-bebas-neue text-gray-900 sm:text-3xl">Our Collection</h2>
+  </header>
+        <section class="container-2xl mx-auto px-8 py-4">
             <div class="flex justify-center items-center">
               <div class="mx-auto max-w-screen-xxl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                 <div class="flex flex-col justify-center items-center space-y-10">
                   <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 md:gap-x-4 md:gap-x-8 w-full">
     
                     <div class="col-span-2 relative group flex justify-center items-center">
-                      <img class="rounded-2xl object-center object-cover h-full w-full" src="http://api.totsworld.co.in/static/img/categories/category5.jpeg" loading="lazy" alt="girl-image" />
+                      <img class="rounded-2xl object-center object-cover h-full w-full" src="{% static "img/categories/category5.jpeg" %}" loading="lazy" alt="girl-image" />
+                      <p class="absolute top-4 left-4 z-10 text-white text-lg font-semibold bg-black bg-opacity-50 p-2 rounded">
+                        Your Paragraph Text Here
+                      </p>
                       <button class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                        Care
+                        Baby Girl
                       </button>
-                      <div class="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50">some text</div>
-                    </div>
+                      </div>
     
                     <div class="flex flex-col space-y-4 md:space-y-8 mt-4 md:mt-0">
                       <div class="relative group flex justify-center items-center">
-                        <img class="rounded-2xl object-center object-cover h-full w-full" src="http://api.totsworld.co.in/static/img/categories/category3.jpeg" alt="shoe-image" />
+                        <img class="rounded-2xl object-center object-cover h-full w-full" src="{% static "img/categories/category3.jpeg" %}" alt="shoe-image" />
                         <button class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                          Baby Clothing
+                          Boy Clothing
                         </button>
-                        <div class="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50"></div>
+                        
                       </div>
                       <div class="relative group flex justify-center items-center">
-                        <img class="rounded-2xl object-center object-cover h-full w-full" src="http://api.totsworld.co.in/static/img/categories/category2.jpeg" alt="watch-image" />
+                        <img class="rounded-2xl object-center object-cover h-full w-full" src="{% static "img/categories/category2.jpeg" %}" alt="watch-image" />
                         <button class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                          Kids Clothing
+                          Care
                         </button>
-                        <div class="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50"></div>
+
                       </div>
                     </div>
                   </div>
                   <div class="flex flex-rows md:gap-x-8">
     
                   <div class="relative group justify-center items-center md:gap-x-4">
-                    <img class="rounded-2xl object-center object-cover h-full w-full" src="http://api.totsworld.co.in/static/img/categories/category4.jpeg" alt="girl-image" />
+                    <img class="rounded-2xl object-center object-cover h-full w-full" src="{% static "img/categories/category4.jpeg" %}" alt="girl-image" />
                     <button class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                      Accessories
+                      Baby Girl
                     </button>
-                    <div class="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50"></div>
+                    
                   </div>
     
                   <div class="relative group justify-center items-center md:gap-x-4 md:gap-x-8">
-                    <img class="rounded-2xl object-center object-cover h-full w-full" src="http://api.totsworld.co.in/static/img/categories/category4.jpeg" alt="girl-image" />
+                    <img class="rounded-2xl object-center object-cover h-full w-full" src="{% static "img/categories/category4.jpeg" %}" alt="girl-image" />
                     <button class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                      Accessories
+                      Girl
                     </button>
-                    <div class="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50"></div>
-                  </div>
+                    </div>
     
                   <div class="relative group justify-center items-center md:gap-x-4 md:gap-x-8">
-                    <img class="rounded-2xl object-center object-cover h-full w-full" src="http://api.totsworld.co.in/static/img/categories/category4.jpeg" alt="girl-image" />
+                    <img class="rounded-2xl object-center object-cover h-full w-full" src="{% static "img/categories/category4.jpeg" %}" alt="girl-image" />
                     <button class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                      Accessories
+                      Boy
                     </button>
-                    <div class="absolute opacity-0 group-hover:opacity-100 transition duration-500 bottom-3 py-6 z-0 px-20 w-36 bg-white bg-opacity-50"></div>
-                  </div>
+                    </div>
                   </div>
     
                 </div>
               </div>
-            </div>
+            </section>
+            
+            <section class="container-2xl mx-auto px-8 py-8">
+              <div class="relative">
+                <div id="grid-container">
+                  <div class="mx-auto max-w-screen-xxl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+                    <div class="absolute top-8 right-0 transform -translate-x-1/2 flex space-x-4">
+                      {% for grid in items %}
+                      <button onclick="showGrid('grid{{ forloop.counter }}')" class="border-slate-500 border bg-white text-dark rounded-full px-4 py-1">{{grid.title}}</button>
+                      {% endfor %}
+                    </div>
+            
+                    {% for item in items %}
+                    <div id="grid{{ forloop.counter }}" class="grid-container-item {% if forloop.first %}block{% else %}hidden{% endif %}">
+                      <header class="text-left">
+                        <h2 class="text-xl font-bold font-bebas-neue text-gray-900 sm:text-3xl">{{item.title}}</h2>
+                      </header>
+            
+                      <ul class="mt-8 grid gap-4 grid-cols-2 md:grid-cols-4 sm:grid-cols-2 lg:grid-cols-4">
+                        {% for image in item.get_images %}
+                        <li>
+                          <a href="#" class="group block overflow-hidden">
+                            <img
+                              src="{{ image.image.url }}"
+                              alt=""
+                              class="rounded-2xl h-[250px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
+                            />
+                          </a>
+                        </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            
+              <script>
+                function showGrid(gridId) {
+                  // Get all grid container items
+                  const grids = document.querySelectorAll('#grid-container .grid-container-item');
+                  
+                  // Iterate through each grid item
+                  grids.forEach(grid => {
+                    // Check if the grid ID matches the gridId parameter
+                    if (grid.id === gridId) {
+                      // Show the matched grid
+                      grid.classList.remove('hidden');
+                      grid.classList.add('block');
+                    } else {
+                      // Hide non-matched grids
+                      grid.classList.remove('block');
+                      grid.classList.add('hidden');
+                    }
+                  });
+                }
+              </script>
+            </section>
+            
+            
             
             <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
         </body>

@@ -12,6 +12,21 @@ class Catalogue(models.Model):
 
     def __str__(self):
         return self.title
+    @property
+    def has_images(self):
+        if CatalogueImage.objects.filter(catalogue=self) != None:
+            return True
+        return False
+    @property
+    def get_images(self):
+        return CatalogueImage.objects.filter(catalogue=self)
+    @property
+    def get_thumbnail(self):
+        thumbnail_queryset = CatalogueImage.objects.filter(catalogue=self)
+        if thumbnail_queryset.exists():
+            return thumbnail_queryset  # Assuming 'image' is the field name containing the thumbnail URL
+        else:
+            return ""
 
 class CatalogueImage(models.Model):
     catalogue = models.ForeignKey("Catalogue",on_delete=models.CASCADE)

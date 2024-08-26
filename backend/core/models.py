@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.conf import settings
 from django.utils import timezone
 from django.shortcuts import reverse
@@ -10,6 +11,22 @@ from .utils import rename_image
 ''' Create your models here.Category, Product, Product_images, Product_category,
 Order, Product_order, referral, Cart,  Wishlist, Review, settings, Issue Report,
 Payments, Billing Detail, Cancled order, Return, Refund, Newsletter subscrtiption,'''
+class WebsiteInfo(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    contact_address = models.TextField()
+    contact_email = models.EmailField(max_length=254, blank=True, null=True)
+    contact_phone = models.CharField(max_length=20, blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.pk and WebsiteInfo.objects.exists():
+            raise ValidationError('There is already an instance of WebsiteInfo.')
+        super(WebsiteInfo, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
 
 class FeaturedImage(models.Model):
     title = models.CharField(max_length=100,blank=True,null=True)

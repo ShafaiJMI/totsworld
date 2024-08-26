@@ -56,14 +56,14 @@
   <header class="text-center mt-4">
     <h2 class="text-xl font-bold font-bebas-neue text-gray-900 sm:text-3xl">Our Collection</h2>
   </header>
-        <section class="container-2xl mx-auto px-8 py-4">
+        <section class="container-2xl mx-auto px-4 lg:px-8 py-4">
             <div class="flex justify-center items-center">
               <div class="mx-auto max-w-screen-xxl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                 <div class="flex flex-col justify-center items-center space-y-10">
                   <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 md:gap-x-4 md:gap-x-8 w-full">
     
                     <div class="col-span-2 relative group flex justify-center items-center">
-                      <img class="rounded-2xl object-center object-cover h-full w-full" src="{% static "img/categories/category5.jpeg" %}" loading="lazy" alt="girl-image" />
+                      <img class="rounded-2xl object-center object-cover h-full w-full" src="http://totsworld.co.in/media/catalogueimage/664a1a03e6ac4a788b0d2b4f96737815.jpg" loading="lazy" alt="girl-image" />
                       <p class="absolute top-4 left-4 z-10 text-white text-lg font-semibold bg-black bg-opacity-50 p-2 rounded">
                         Your Paragraph Text Here
                       </p>
@@ -118,15 +118,17 @@
               </div>
             </section>
             
-            <section class="container-2xl mx-auto px-8 py-8">
+            <section class="container-2xl mx-auto px-4 lg:px-8 py-8">
+              
               <div class="relative">
+                <div class="absolute top-8 right-0 transform -translate-x-1/2 flex space-x-4">
+                  {% for grid in items %}
+                  <button onclick="showGrid('grid{{ forloop.counter }}')" class="border-slate-500 border bg-white text-dark rounded-full px-4 py-1">{{grid.title}}</button>
+                  {% endfor %}
+                </div>
                 <div id="grid-container">
                   <div class="mx-auto max-w-screen-xxl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-                    <div class="absolute top-8 right-0 transform -translate-x-1/2 flex space-x-4">
-                      {% for grid in items %}
-                      <button onclick="showGrid('grid{{ forloop.counter }}')" class="border-slate-500 border bg-white text-dark rounded-full px-4 py-1">{{grid.title}}</button>
-                      {% endfor %}
-                    </div>
+                    
             
                     {% for item in items %}
                     <div id="grid{{ forloop.counter }}" class="grid-container-item {% if forloop.first %}block{% else %}hidden{% endif %}">
@@ -174,9 +176,6 @@
                 }
               </script>
             </section>
-            
-            
-            
             <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
         </body>
         </html>

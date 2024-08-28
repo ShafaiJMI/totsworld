@@ -31,4 +31,4 @@ def newcatalogue(request):
         'website_info': website_info,
         'items':item,
     }
-    return render(request,'catalogue.html',context)
+    return render(request,'catalogue-2.html',context)

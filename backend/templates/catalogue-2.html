@@ -53,128 +53,57 @@
     </svg>
   </a>
   
-  <header class="text-center mt-4">
-    <h2 class="text-xl font-bold font-bebas-neue text-gray-900 sm:text-3xl">Our Collection</h2>
+  <header class="container-2xl mx-8 m-4">
+    <h2 class="text-xl font-bebas-neue text-gray-900 sm:text-3xl">Tots World</h2>
   </header>
         <section class="container-2xl mx-auto px-4 lg:px-8 py-4">
             <div class="flex justify-center items-center">
-              <div class="mx-auto max-w-screen-xxl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+              <div class="mx-auto max-w-screen-xxl py-8 sm:py-12">
                 <div class="flex flex-col justify-center items-center space-y-10">
-                  <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 md:gap-x-4 md:gap-x-8 w-full">
+                  <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 w-full">
     
-                    <div class="col-span-2 relative group flex justify-center items-center">
-                      <img class="rounded-2xl object-center object-cover h-full w-full" src="http://totsworld.co.in/media/catalogueimage/664a1a03e6ac4a788b0d2b4f96737815.jpg" loading="lazy" alt="girl-image" />
-                      <p class="absolute top-4 left-4 z-10 text-white text-lg font-semibold bg-black bg-opacity-50 p-2 rounded">
-                        Your Paragraph Text Here
-                      </p>
+                    <div class="relative group flex justify-center items-center">
+                      <img class="object-center object-cover h-full w-full" src="http://totsworld.co.in/media/catalogueimage/664a1a03e6ac4a788b0d2b4f96737815.jpg" loading="lazy" alt="girl-image" />
                       <button class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
                         Baby Girl
                       </button>
                       </div>
     
-                    <div class="flex flex-col space-y-4 md:space-y-8 mt-4 md:mt-0">
-                      <div class="relative group flex justify-center items-center">
-                        <img class="rounded-2xl object-center object-cover h-full w-full" src="{% static "img/categories/category3.jpeg" %}" alt="shoe-image" />
-                        <button class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                          Boy Clothing
-                        </button>
-                        
+                    <div class="bg-slate-300/50 flex flex-col space-y-4 md:space-y-8 mt-4 md:mt-0">
+                      <div class="justify-center items-center m-2">
+                        <h4>Heading</h4>
+                        <p class="">
+                          Your Paragraph Text Here
+                        </p>
                       </div>
-                      <div class="relative group flex justify-center items-center">
-                        <img class="rounded-2xl object-center object-cover h-full w-full" src="{% static "img/categories/category2.jpeg" %}" alt="watch-image" />
-                        <button class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                          Care
-                        </button>
-
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex flex-rows md:gap-x-8">
-    
-                  <div class="relative group justify-center items-center md:gap-x-4">
-                    <img class="rounded-2xl object-center object-cover h-full w-full" src="{% static "img/categories/category4.jpeg" %}" alt="girl-image" />
-                    <button class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                      Baby Girl
-                    </button>
                     
-                  </div>
-    
-                  <div class="relative group justify-center items-center md:gap-x-4 md:gap-x-8">
-                    <img class="rounded-2xl object-center object-cover h-full w-full" src="{% static "img/categories/category4.jpeg" %}" alt="girl-image" />
-                    <button class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                      Girl
-                    </button>
-                    </div>
-    
-                  <div class="relative group justify-center items-center md:gap-x-4 md:gap-x-8">
-                    <img class="rounded-2xl object-center object-cover h-full w-full" src="{% static "img/categories/category4.jpeg" %}" alt="girl-image" />
-                    <button class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
-                      Boy
-                    </button>
                     </div>
                   </div>
-    
-                </div>
               </div>
             </section>
             
             <section class="container-2xl mx-auto px-4 lg:px-8 py-8">
-              
-              <div class="relative">
-                <div class="absolute top-8 left-3/4 transform -translate-x-1/2 flex space-x-4">
-                  {% for grid in items %}
-                  <button onclick="showGrid('grid{{ forloop.counter }}')" class="border-slate-500 border bg-white text-dark rounded-full px-4 py-1">{{grid.title}}</button>
-                  {% endfor %}
-                </div>
-                <div id="grid-container">
-                  <div class="mx-auto max-w-screen-xxl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-                    
-            
-                    {% for item in items %}
-                    <div id="grid{{ forloop.counter }}" class="grid-container-item {% if forloop.first %}block{% else %}hidden{% endif %}">
-                      <header class="text-left">
-                        <h2 class="text-xl font-bold font-bebas-neue text-gray-900 sm:text-3xl">{{item.title}}</h2>
-                      </header>
-            
-                      <ul class="mt-8 grid gap-4 grid-cols-2 md:grid-cols-4 sm:grid-cols-2 lg:grid-cols-4">
-                        {% for image in item.get_images %}
-                        <li>
-                          <a href="#" class="group block overflow-hidden">
-                            <img
-                              src="{{ image.image.url }}"
-                              alt=""
-                              class="rounded-2xl h-[250px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
-                            />
-                          </a>
-                        </li>
-                        {% endfor %}
-                      </ul>
-                    </div>
-                    {% endfor %}
+              <header class="text-center container-2xl mx-8 m-4">
+                <h2 class="text-xl font-bebas-neue text-gray-900 sm:text-3xl">Tots World Collection</h2>
+              </header>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-4 md:gap-x-8 w-full">
+                {% for item in items %}
+
+                <div class="relative group justify-center items-center">
+                  <img class="object-center object-cover h-full w-full" src="{% static "img/categories/category3.jpeg" %}" alt="shoe-image" />
+                  <button class="dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 bottom-4 z-10 absolute text-base font-medium leading-none text-gray-800 py-3 w-36 bg-white">
+                    Boy Clothing
+                  </button>
+                  <div class="text-center bg-slate-300/50 space-y-4 md:space-y-8 mt-4 md:mt-0">
+                    <h4>{{ item.title }}</h4>
+                        <p class="">
+                          Your Paragraph Text Here
+                        </p>
                   </div>
                 </div>
+                {% endfor %}
+
               </div>
-            
-              <script>
-                function showGrid(gridId) {
-                  // Get all grid container items
-                  const grids = document.querySelectorAll('#grid-container .grid-container-item');
-                  
-                  // Iterate through each grid item
-                  grids.forEach(grid => {
-                    // Check if the grid ID matches the gridId parameter
-                    if (grid.id === gridId) {
-                      // Show the matched grid
-                      grid.classList.remove('hidden');
-                      grid.classList.add('block');
-                    } else {
-                      // Hide non-matched grids
-                      grid.classList.remove('block');
-                      grid.classList.add('hidden');
-                    }
-                  });
-                }
-              </script>
             </section>
             <section>
               <div class="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">

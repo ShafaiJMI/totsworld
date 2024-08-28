@@ -47,7 +47,7 @@
 </head>
 <body class="">
   
-  <a href="https://wa.me/+919205901243" target="_blank" class="fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg">
+  <a href="https://wa.me/+919205901243" target="_blank" class="z-10 fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M20.49 19.74L18.5 21.74A2.25 2.25 0 0115.45 21l-1.7-1.7a2.25 2.25 0 01-.6-1.93c.1-.6.41-1.15.9-1.5l1.7-1.14a2.25 2.25 0 01.93-.3c.61-.02 1.22.1 1.78.3a2.25 2.25 0 011.04 1.06l.9 1.78a2.25 2.25 0 01-.02 2.25zM3.6 4.36A10.84 10.84 0 0117.6 20.5L16 19.14a8.25 8.25 0 10-8.7-8.7L4.6 4.36a10.84 10.84 0 01-.98-9.28L2.07 4.26a8.5 8.5 0 1013.33 13.33l2.24 2.24c-2.4 2.4-6.29 2.4-8.7 0l-4.54-4.53a8.48 8.48 0 01-2.24-2.24L.36 3.5A10.84 10.84 0 013.6 4.36z"/>
     </svg>
@@ -121,7 +121,7 @@
             <section class="container-2xl mx-auto px-4 lg:px-8 py-8">
               
               <div class="relative">
-                <div class="absolute top-8 right-0 transform -translate-x-1/2 flex space-x-4">
+                <div class="absolute top-8 left-3/4 transform -translate-x-1/2 flex space-x-4">
                   {% for grid in items %}
                   <button onclick="showGrid('grid{{ forloop.counter }}')" class="border-slate-500 border bg-white text-dark rounded-full px-4 py-1">{{grid.title}}</button>
                   {% endfor %}
@@ -175,6 +175,31 @@
                   });
                 }
               </script>
+            </section>
+            <section>
+              <div class="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">{{ website_info.title }}</div>
+                    <p class="text-gray-700 text-base">{{ website_info.description }}</p>
+                </div>
+                <div class="px-6 pt-4 pb-2">
+                    <h3 class="font-semibold text-lg">Contact Information</h3>
+                    <p class="text-gray-600">
+                        <strong>Address:</strong> {{ website_info.contact_address }}
+                    </p>
+                    {% if website_info.contact_email %}
+                        <p class="text-gray-600">
+                            <strong>Email:</strong> <a href="mailto:{{ website_info.contact_email }}" class="text-blue-600">{{ website_info.contact_email }}</a>
+                        </p>
+                    {% endif %}
+                    {% if website_info.contact_phone %}
+                        <p class="text-gray-600">
+                            <strong>Phone:</strong> <a href="tel:{{ website_info.contact_phone }}" class="text-blue-600">{{ website_info.contact_phone }}</a>
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+            
             </section>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
         </body>

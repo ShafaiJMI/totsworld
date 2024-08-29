@@ -20,6 +20,6 @@ from . import views
 
 urlpatterns = [
     path("api/catalogue/",views.CatalogueAPI.as_view(),name="catalogue-api"),
-    path("catalogue/",views.catalogue,name="catalogue"),
-    path("catalogue-2/",views.newcatalogue,name="catalogue-new"),
+    path("catalogue-2/",views.catalogue,name="catalogue"),
+    path("catalogue/",views.newcatalogue,name="catalogue-new"),
 ]

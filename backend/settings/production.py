@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['totsworld.co.in','api.totsworld.co.in']
+ALLOWED_HOSTS = ['107.180.112.156','totsworld.co.in','api.totsworld.co.in']
 
 DATABASES = {
     'default': {

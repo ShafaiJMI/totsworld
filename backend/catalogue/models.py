@@ -27,6 +27,14 @@ class Catalogue(models.Model):
             return thumbnail_queryset  # Assuming 'image' is the field name containing the thumbnail URL
         else:
             return thumbnail_queryset
+    @property
+    def get_slides(self):
+        images = CatalogueImage.objects.filter(catalogue=self)[0:5]
+        if images:
+            return images  # Assuming 'image' is the field name containing the thumbnail URL
+        else:
+            return images
+    
 
 class CatalogueImage(models.Model):
     catalogue = models.ForeignKey("Catalogue",on_delete=models.CASCADE)

@@ -1,0 +1,160 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'fontawesome-free-6.6.0-web/css/fontawesome.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+  <title>Catalogue | Tots World</title>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bubblegum: '#ffd3db',
+            cream : '#fffdf9',
+          },
+          fontFamily: {
+            'raleway': ['Raleway', 'sans-serif'],
+          },
+          screens: {
+            'sm': '640px',
+            // => @media (min-width: 640px) { ... }
+      
+            'md': '768px',
+            // => @media (min-width: 768px) { ... }
+      
+            'lg': '1024px',
+            // => @media (min-width: 1024px) { ... }
+      
+            'xl': '1280px',
+            // => @media (min-width: 1280px) { ... }
+      
+            '2xl': '1536px',
+            // => @media (min-width: 1536px) { ... }
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="">
+  
+  <a href="https://wa.me/+919205901243" target="_blank" class="z-10 fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M20.49 19.74L18.5 21.74A2.25 2.25 0 0115.45 21l-1.7-1.7a2.25 2.25 0 01-.6-1.93c.1-.6.41-1.15.9-1.5l1.7-1.14a2.25 2.25 0 01.93-.3c.61-.02 1.22.1 1.78.3a2.25 2.25 0 011.04 1.06l.9 1.78a2.25 2.25 0 01-.02 2.25zM3.6 4.36A10.84 10.84 0 0117.6 20.5L16 19.14a8.25 8.25 0 10-8.7-8.7L4.6 4.36a10.84 10.84 0 01-.98-9.28L2.07 4.26a8.5 8.5 0 1013.33 13.33l2.24 2.24c-2.4 2.4-6.29 2.4-8.7 0l-4.54-4.53a8.48 8.48 0 01-2.24-2.24L.36 3.5A10.84 10.84 0 013.6 4.36z"/>
+    </svg>
+  </a>
+  
+  <header class="container px-5 py-2 mx-auto flex justify-between items-center">
+    <h2 class="text-2xl font-raleway uppercase text-gray-900 sm:text-3xl">{{ website_info.title }}</h2>
+    <a href="{% url 'catalogue' %}">Back to home</a>
+  </header>
+  
+  <section class="container-2xl mx-auto px-4 lg:px-8 py-8">
+              
+    <div class="relative">
+      <div class="absolute top-8 left-3/4 transform -translate-x-1/2 flex space-x-4">
+      </div>
+      <div id="grid-container">
+        <div class="mx-auto max-w-screen-xxl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+          
+          <div id="" class="grid-container-item block">
+            <header class="text-left">
+              <h2 class="text-xl font-raleway text-gray-900 sm:text-3xl">{{item.title}}</h2>
+            </header>
+  
+            <ul class="mt-8 grid gap-4 grid-cols-2 md:grid-cols-4 sm:grid-cols-2 lg:grid-cols-4">
+              {% for image in item.get_images %}
+              <li>
+                <a href="#" class="group block overflow-hidden">
+                  <img
+                    src="{{ image.image.url }}"
+                    alt=""
+                    class="rounded-2xl h-[250px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
+                  />
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <script>
+      function showGrid(gridId) {
+        // Get all grid container items
+        const grids = document.querySelectorAll('#grid-container .grid-container-item');
+        
+        // Iterate through each grid item
+        grids.forEach(grid => {
+          // Check if the grid ID matches the gridId parameter
+          if (grid.id === gridId) {
+            // Show the matched grid
+            grid.classList.remove('hidden');
+            grid.classList.add('block');
+          } else {
+            // Hide non-matched grids
+            grid.classList.remove('block');
+            grid.classList.add('hidden');
+          }
+        });
+      }
+    </script>
+  </section>
+                <footer class="font-raleway py-8">
+                  <div class="container mx-auto px-4">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                      <!-- Site Title -->
+                      <div class="flex flex-col items-center md:items-start">
+                        <h2 class="text-2xl mb-4">Tots World</h2>
+                        <p class="">Your trusted source for baby products.</p>
+                      </div>
+                
+                      <!-- Contact Information -->
+                      <div class="flex flex-col items-center md:items-start">
+                        <h3 class="text-lg mb-4">Contact Us</h3>
+                        <p class="">Phone: {{ website_info.contact_phone }}</p>
+                        <p class="">Email: {{ website_info.contact_email }}</p>
+                        <p class="">Address: {{ website_info.contact_address }}</p>
+                      </div>
+                
+                      <!-- Social Icons -->
+                      <div class="flex flex-col items-center md:items-start">
+                        <h3 class="text-lg mb-4">Follow Us</h3>
+                        <div class="flex space-x-4">
+                          <!-- Social Icons -->
+                          <a href="#" class="">
+                            <i class="fab fa-facebook-f"></i>
+                          </a>
+                          <a href="#" class="">
+                            <i class="fab fa-twitter"></i>
+                          </a>
+                          <a href="#" class="">
+                            <i class="fab fa-instagram"></i>
+                          </a>
+                          <a href="#" class="">
+                            <i class="fab fa-linkedin-in"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                
+                    <!-- Copyright Text -->
+                    <div class="border-t border-gray-800 mt-8 pt-4 text-center">
+                      <p class="text-sm">&copy; 2024 Tots World. All rights reserved.</p>
+                    </div>
+                  </div>
+                </footer>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+        </body>
+        </html>
